@@ -1,32 +1,30 @@
 def linear_search_iterative(arr, x):
     for i in range(len(arr)):
         if arr[i] == x:
-            return i
-
-    return -1
+            return True
+        else:
+            return False
 
 
 def binary_search_iterative(arr, x):
-    low = 0
     high = len(arr) - 1
-    mid = 0
+    low = 0
+    undefined = -1
 
     while low <= high:
+        mid = int(low + (high - low) / 2)
+        if x == arr[mid]:
+            return True
 
-        mid = (high + low) // 2
-        if arr[mid] < x:
-            low = mid + 1
-
-        elif arr[mid] > x:
+        elif x < arr[mid]:
             high = mid - 1
 
         else:
-            return mid
+            low = mid + 1
+    return False
 
-    return -1
 
-
-def binary_search_recursive_helper(arr, low, high, x):
+def binary_search_recursive(arr, low, high, x):
     # Check base case
     if high >= low:
 
