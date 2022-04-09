@@ -32,7 +32,7 @@ if __name__ == "__main__":
     # defining a list of function
     search_function_list = [searching.linear_search_iterative, searching.linear_search_recursive,
                             searching.binary_search_iterative, searching.binary_search_recursive]
-    sort_function_list = [sorting.bubble_sort, sorting.insertion_sort, sorting.counting_sort, sorting.merge_sort]
+    sort_function_list = [sorting.bubble_sort, sorting.insertion_sort, sorting.counting_sort]
 
     misc_function_list = [misc.is_sorted]
 
