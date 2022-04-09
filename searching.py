@@ -4,6 +4,24 @@ def linear_search_iterative(arr, x):
             return True
         else:
             return False
+        
+  
+def linear_search_recursive(input_list, l, x, key):
+    if x < l:
+        return -1
+    if input_list[l] == key:
+        return l
+    if input_list[x] == key:
+        return x
+    return linear_search_recursive(input_list, l+1, x-1, key)
+
+# to execute program, input list and key go here
+n = len(input_list)
+result = linear_search_recursive(input_list, 0, n-1, key)
+if result != -1:
+    print ('Ture')
+else:
+    print ('False')
 
 
 def binary_search_iterative(arr, x):
@@ -24,48 +42,28 @@ def binary_search_iterative(arr, x):
     return False
 
 
-def binary_search_recursive(arr, low, high, x):
-    # Check base case
-    if high >= low:
-
-        mid = (high + low) // 2
-
-        # If element is present at the middle itself
-        if arr[mid] == x:
-            return mid
-
-        # If element is smaller than mid, then it can only
-        # be present in left subarray
-        elif arr[mid] > x:
-            return binary_search_recursive_helper(arr, low, mid - 1, x)
-
-        # Else the element can only be present in right subarray
+def binary_search_recursive(input_list, l, r, key): 
+    if r >= l:
+        n = l + (r - l) // 2
+        if input_list[n] == key:
+            return n
+        elif input_list[n] > key:
+            return binary_search_recursive(input_list, l, n-1, key)
         else:
-            return binary_search_recursive_helper(arr, mid + 1, high, x)
-
+            return binary_search_recursive(input_list, n + 1, r, key)
     else:
-        # Element is not present in the array
         return -1
 
-
-def binary_search_recursive(arr, x):
-    return binary_search_recursive_helper(arr, 0, len(arr)-1, x)
-
-def linear_search_recursive_helper( arr, l, r, x):
-    if r < l:
-        return -1
-    if arr[l] == x:
-        return l
-    if arr[r] == x:
-        return r
-    return linear_search_recursive_helper(arr, l+1, r-1, x)
-
-def linear_search_recursive(arr, x):
-    return linear_search_recursive_helper(arr, 0, len(arr) - 1, x)
-# arr1 = [-10, -5, -3, -1, 0, 5, 8, 10]
-# print("searching using linear search iterative  ", str(arr1), "  for 8  -->  ", str(linear_search_iterative(arr1, 8)))
-# print("searching using linear search iterative  ", str(arr1), "  for 2  -->  ", str(linear_search_iterative(arr1, 2)))
-# print("searching using binary search iterative  ", str(arr1), "  for -5  -->  ", str(binary_search_iterative(arr1, -5)))
-# print("searching using binary search iterative  ", str(arr1), "  for -8  -->  ", str(binary_search_iterative(arr1, -8)))
-# print("searching using binary search recursive  ", str(arr1), "  for -3  -->  ", str(binary_search_recursive(arr1, -3)))
-# print("searching using binary search recursive  ", str(arr1), "  for 6  -->  ", str(binary_search_recursive(arr1, 6)))
+# to execute program, input list and key go here
+result = binary_search_recursive(input_list, 0, len(input_list)-1, key)
+if result != -1:
+    print('True')
+else:
+    print('False')
+    
+    
+if __name__ == "__main__":
+    
+    # You can test your implementation here locally
+    # anything outside this main section shall be executed when you import this file in
+    # any other file such as in the analysis.py
